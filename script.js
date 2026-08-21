@@ -1,289 +1,194 @@
-/* ============================================================
+/* ==========================================================
    CONFIGURACIÓN
-   ============================================================
-
-   EDITA AQUÍ LOS DATOS DE CONFIGURACIÓN.
-
-   IMPORTANTE:
-   El email de destino NO debe utilizarse directamente desde
-   el navegador para enviar mensajes.
-
-   El valor de EMAIL_DESTINO sirve como referencia para tu
-   backend.
-
-============================================================ */
+========================================================== */
 
 
-/* ============================================================
-   EDITAR: EMAIL DE DESTINO
-============================================================ */
-
-const EMAIL_DESTINO = "tu-email@ejemplo.com";
-
-
-/* ============================================================
-   EDITAR: ENDPOINT DEL SERVIDOR
-============================================================
-
-   Tu servidor debe recibir:
-
-   POST /api/send-sms
-
-============================================================ */
-
-const ENDPOINT_ENVIO = "/api/send-sms";
-
-
-/* ============================================================
-   EDITAR: MENSAJES DEL FORMULARIO
-============================================================ */
-
-const MENSAJE_ENVIANDO =
-    "Enviando información...";
-
+/*
+    ========================================================
+    ===== EDITAR AQUÍ: MENSAJES =====
+    ========================================================
+*/
 
 const MENSAJE_EXITO =
-    "¡Información enviada correctamente!";
+    "¡Registro completado correctamente!";
 
 
 const MENSAJE_ERROR =
-    "No se ha podido enviar la información. Inténtalo de nuevo.";
+    "Ha ocurrido un error. Inténtalo de nuevo.";
 
 
 const MENSAJE_CAMPOS =
-    "Por favor, introduce tu nombre y apellidos.";
+    "Por favor, completa todos los campos.";
 
 
-/* ============================================================
-   ELEMENTOS HTML
-============================================================ */
+const MENSAJE_ENVIANDO =
+    "Enviando...";
+
+
+/*
+    ========================================================
+    ELEMENTOS HTML
+    ========================================================
+*/
 
 const formulario =
-    document.getElementById("signupForm");
+    document.getElementById(
+        "registrationForm"
+    );
 
 
 const nombre =
-    document.getElementById("firstName");
+    document.getElementById(
+        "firstName"
+    );
 
 
 const apellidos =
-    document.getElementById("lastName");
-
-
-const titulo =
-    document.getElementById("mainTitle");
-
-
-const descripcion =
-    document.getElementById("mainDescription");
+    document.getElementById(
+        "lastName"
+    );
 
 
 const boton =
-    document.getElementById("submitButton");
+    document.getElementById(
+        "submitButton"
+    );
 
 
 const mensaje =
-    document.getElementById("statusMessage");
+    document.getElementById(
+        "message"
+    );
 
 
-/* ============================================================
-   MOSTRAR MENSAJE
-============================================================ */
+/*
+    ========================================================
+    MOSTRAR MENSAJE
+    ========================================================
+*/
 
-function mostrarMensaje(texto, tipo) {
+function mostrarMensaje(
+    texto,
+    tipo
+) {
 
-    mensaje.textContent = texto;
+    mensaje.textContent =
+        texto;
 
     mensaje.className =
-        "statusMessage " + tipo;
+        "message " + tipo;
 }
 
 
-/* ============================================================
-   OBTENER DATOS DEL FORMULARIO
-============================================================ */
-
-function obtenerDatos() {
-
-    return {
-
-        /*
-         * Nombre introducido por el usuario
-         */
-
-        nombre:
-            nombre.value.trim(),
-
-
-        /*
-         * Apellidos introducidos por el usuario
-         */
-
-        apellidos:
-            apellidos.value.trim(),
-
-
-        /*
-         * Título editable
-         */
-
-        titulo:
-            titulo.innerText.trim(),
-
-
-        /*
-         * Descripción editable
-         */
-
-        descripcion:
-            descripcion.innerText.trim(),
-
-
-        /*
-         * Email configurado.
-
-         * El backend debe decidir el destinatario real.
-         */
-
-        emailDestino:
-            EMAIL_DESTINO
-    };
-}
-
-
-/* ============================================================
-   ENVÍO
-============================================================ */
+/*
+    ========================================================
+    FORMULARIO
+    ========================================================
+*/
 
 formulario.addEventListener(
     "submit",
-    async function (event) {
+    function(event) {
+
+        /*
+            Evita recargar la página
+        */
 
         event.preventDefault();
 
 
-        /* ==============================================
-           VALIDAR NOMBRE
-        ============================================== */
+        /*
+            Obtener valores
+        */
 
-        if (!nombre.value.trim()) {
-
-            mostrarMensaje(
-                MENSAJE_CAMPOS,
-                "error"
-            );
-
-            nombre.focus();
-
-            return;
-        }
+        const nombreValor =
+            nombre.value.trim();
 
 
-        /* ==============================================
-           VALIDAR APELLIDOS
-        ============================================== */
+        const apellidosValor =
+            apellidos.value.trim();
 
-        if (!apellidos.value.trim()) {
+
+        /*
+            Validar
+        */
+
+        if (
+            !nombreValor ||
+            !apellidosValor
+        ) {
 
             mostrarMensaje(
                 MENSAJE_CAMPOS,
                 "error"
             );
 
-            apellidos.focus();
-
             return;
         }
 
 
-        /* ==============================================
-           PREPARAR DATOS
-        ============================================== */
+        /*
+            Mostrar estado
+        */
 
-        const datos =
-            obtenerDatos();
-
-
-        /* ==============================================
-           CAMBIAR BOTÓN
-        ============================================== */
-
-        boton.disabled = true;
+        boton.disabled =
+            true;
 
         boton.textContent =
             MENSAJE_ENVIANDO;
 
 
-        try {
+        /*
+            ==================================================
+            DEMOSTRACIÓN
 
-            /* ==========================================
-               ENVIAR AL BACKEND
-            ========================================== */
+            En esta primera versión GitHub solamente
+            recibe el formulario.
 
-            const respuesta =
-                await fetch(
-                    ENDPOINT_ENVIO,
-                    {
-                        method: "POST",
+            Aquí conectaremos posteriormente el servicio
+            de email.
 
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
+            ==================================================
+        */
 
-                        body:
-                            JSON.stringify(datos)
-                    }
+        console.log(
+            "Nombre:",
+            nombreValor
+        );
+
+
+        console.log(
+            "Apellidos:",
+            apellidosValor
+        );
+
+
+        /*
+            Simular envío
+        */
+
+        setTimeout(
+            function() {
+
+                mostrarMensaje(
+                    MENSAJE_EXITO,
+                    "success"
                 );
 
 
-            /* ==========================================
-               COMPROBAR RESPUESTA
-            ========================================== */
-
-            if (!respuesta.ok) {
-
-                throw new Error(
-                    "El servidor respondió con un error."
-                );
-            }
+                formulario.reset();
 
 
-            /* ==========================================
-               ÉXITO
-            ========================================== */
-
-            mostrarMensaje(
-                MENSAJE_EXITO,
-                "success"
-            );
+                boton.disabled =
+                    false;
 
 
-            /* Limpiar formulario */
+                boton.textContent =
+                    "Registrarse";
 
-            formulario.reset();
-
-
-        } catch (error) {
-
-            console.error(
-                "Error de envío:",
-                error
-            );
-
-
-            mostrarMensaje(
-                MENSAJE_ERROR,
-                "error"
-            );
-
-        } finally {
-
-            boton.disabled = false;
-
-            boton.textContent =
-                "Registrarse";
-        }
+            },
+            800
+        );
 
     }
 );

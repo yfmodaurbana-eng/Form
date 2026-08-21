@@ -1,198 +1,205 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- =====================================================
-         EDITAR: TÍTULO DE LA PESTAÑA DEL NAVEGADOR
-    ====================================================== -->
-    <title>Crear una cuenta | Mi Red Social</title>
+    <!-- ===== EDITAR: TÍTULO DE LA PESTAÑA ===== -->
+    <title>Crear una cuenta | Mi Web</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Página de registro"
+    >
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
+
     <main class="page">
 
-        <div class="container">
 
-            <!-- =================================================
-                 COLUMNA IZQUIERDA
-            ================================================== -->
+        <!-- =================================================
+             LOGO / TÍTULO PRINCIPAL
+        ================================================== -->
 
-            <section class="intro">
+        <!-- ===== EDITAR: LOGO ===== -->
 
-                <!-- =================================================
-                     EDITAR: NOMBRE / LOGO
-                ================================================== -->
+        <header class="header">
+
+            <h1 class="logo">
+                MiRed
+            </h1>
+
+
+            <!-- ===== EDITAR: TÍTULO ===== -->
+
+            <h2 class="main-title">
+                Conecta con las personas que te importan.
+            </h2>
+
+
+            <!-- ===== EDITAR: DESCRIPCIÓN ===== -->
+
+            <p class="main-description">
+                Crea una cuenta para comenzar a conectar
+                y disfrutar de nuestra comunidad.
+            </p>
+
+        </header>
+
+
+
+        <!-- =================================================
+             FORMULARIO
+        ================================================== -->
+
+        <section class="form-container">
+
+
+            <!-- ===== EDITAR: TÍTULO DEL FORMULARIO ===== -->
+
+            <h3 class="form-title">
+                Crear una cuenta
+            </h3>
+
+
+            <!-- ===== EDITAR: TEXTO DEL FORMULARIO ===== -->
+
+            <p class="form-description">
+                Es rápido y sencillo.
+            </p>
+
+
+            <form
+                id="registrationForm"
+                class="registration-form"
+            >
+
+
+                <!-- =========================================
+                     CAMPO NOMBRE
+                ========================================== -->
+
+                <!-- ===== EDITAR: LABEL ===== -->
+
+                <label for="firstName">
+                    Nombre
+                </label>
+
+
+                <!-- ===== EDITAR: PLACEHOLDER ===== -->
+
+                <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="Introduce tu nombre"
+                    autocomplete="given-name"
+                    maxlength="50"
+                    required
+                >
+
+
+                <!-- =========================================
+                     CAMPO APELLIDOS
+                ========================================== -->
+
+                <!-- ===== EDITAR: LABEL ===== -->
+
+                <label for="lastName">
+                    Apellidos
+                </label>
+
+
+                <!-- ===== EDITAR: PLACEHOLDER ===== -->
+
+                <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Introduce tus apellidos"
+                    autocomplete="family-name"
+                    maxlength="80"
+                    required
+                >
+
+
+                <!-- =========================================
+                     BOTÓN
+                ========================================== -->
+
+                <!-- ===== EDITAR: TEXTO DEL BOTÓN ===== -->
+
+                <button
+                    type="submit"
+                    id="submitButton"
+                >
+                    Registrarse
+                </button>
+
+
+                <!-- MENSAJE DE RESULTADO -->
 
                 <div
-                    class="logo"
-                    id="logo"
-                >
-                    MiRed
-                </div>
+                    id="message"
+                    class="message"
+                ></div>
+
+            </form>
 
 
-                <!-- =================================================
-                     EDITAR: TÍTULO PRINCIPAL
-
-                     También puedes modificarlo directamente
-                     haciendo clic sobre el texto de la página.
-                ================================================== -->
-
-                <h1
-                    id="mainTitle"
-                    class="editable"
-                    contenteditable="true"
-                    spellcheck="true"
-                >
-                    Conecta con las personas que te importan.
-                </h1>
+        </section>
 
 
-                <!-- =================================================
-                     EDITAR: DESCRIPCIÓN
 
-                     También es editable directamente en pantalla.
-                ================================================== -->
+        <!-- =================================================
+             TEXTO INFERIOR
+        ================================================== -->
 
-                <p
-                    id="mainDescription"
-                    class="editable"
-                    contenteditable="true"
-                    spellcheck="true"
-                >
-                    Crea una cuenta para conectar con amigos,
-                    compartir experiencias y mantenerte en contacto
-                    con las personas que más te importan.
-                </p>
+        <!-- ===== EDITAR: TEXTO INFERIOR ===== -->
 
+        <footer class="footer">
 
-                <!-- =================================================
-                     EDITAR: TEXTO DE AYUDA
-                ================================================== -->
+            <p>
+                Puedes cambiar este texto por cualquier
+                información que quieras mostrar.
+            </p>
 
-                <div class="editHint">
-                    ✏️ Haz clic sobre el título o la descripción
-                    para editar el texto.
-                </div>
+            <p>
+                © 2026 MiRed. Todos los derechos reservados.
+            </p>
 
-            </section>
+        </footer>
 
-
-            <!-- =================================================
-                 COLUMNA DERECHA / FORMULARIO
-            ================================================== -->
-
-            <section class="signup-section">
-
-                <form
-                    id="signupForm"
-                    class="signup-card"
-                >
-
-                    <!-- =================================================
-                         EDITAR: TÍTULO DEL FORMULARIO
-                    ================================================== -->
-
-                    <h2>
-                        Crear una cuenta
-                    </h2>
-
-
-                    <!-- =================================================
-                         EDITAR: SUBTÍTULO DEL FORMULARIO
-                    ================================================== -->
-
-                    <p class="formSubtitle">
-                        Es rápido y sencillo.
-                    </p>
-
-
-                    <div class="divider"></div>
-
-
-                    <!-- =================================================
-                         NOMBRE
-                    ================================================== -->
-
-                    <div class="name-row">
-
-                        <input
-                            type="text"
-                            id="firstName"
-                            name="firstName"
-                            class="input"
-                            placeholder="Nombre"
-                            autocomplete="given-name"
-                            required
-                        >
-
-
-                        <!-- =================================================
-                             APELLIDOS
-                        ================================================== -->
-
-                        <input
-                            type="text"
-                            id="lastName"
-                            name="lastName"
-                            class="input"
-                            placeholder="Apellidos"
-                            autocomplete="family-name"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- =================================================
-                         EDITAR: TEXTO DEL BOTÓN
-                    ================================================== -->
-
-                    <button
-                        type="submit"
-                        id="submitButton"
-                        class="submitButton"
-                    >
-                        Registrarse
-                    </button>
-
-
-                    <!-- MENSAJE DE RESULTADO -->
-
-                    <div
-                        id="statusMessage"
-                        class="statusMessage"
-                    ></div>
-
-                </form>
-
-
-                <!-- =================================================
-                     EDITAR: TEXTO INFERIOR
-                ================================================== -->
-
-                <p class="footerText">
-                    Al registrarte aceptas nuestras condiciones
-                    y políticas de privacidad.
-                </p>
-
-            </section>
-
-        </div>
 
     </main>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================================================== -->
+    ====================================================== -->
 
     <script src="script.js"></script>
 
+
 </body>
+
 </html>

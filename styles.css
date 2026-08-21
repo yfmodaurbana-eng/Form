@@ -1,21 +1,23 @@
-/* ============================================================
+/* ==========================================================
    CONFIGURACIÓN GENERAL
-============================================================ */
+========================================================== */
 
 * {
     box-sizing: border-box;
 }
 
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
+html {
+    scroll-behavior: smooth;
 }
 
 
 body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
     font-family:
         Arial,
         Helvetica,
@@ -27,54 +29,51 @@ body {
 }
 
 
-/* ============================================================
-   CONTENEDOR PRINCIPAL
-============================================================ */
+/* ==========================================================
+   PÁGINA
+========================================================== */
 
 .page {
+
     min-height: 100vh;
+
+    width: 100%;
 
     display: flex;
 
+    flex-direction: column;
+
     align-items: center;
 
-    justify-content: center;
-
-    padding: 40px 20px;
+    padding:
+        60px 20px 40px;
 }
 
 
-.container {
+/* ==========================================================
+   CABECERA
+========================================================== */
+
+.header {
+
     width: 100%;
 
-    max-width: 1000px;
+    max-width: 650px;
 
-    display: grid;
+    text-align: center;
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        400px;
-
-    gap: 70px;
-
-    align-items: center;
+    margin-bottom: 30px;
 }
 
 
-/* ============================================================
-   COLUMNA IZQUIERDA
-============================================================ */
-
-.intro {
-    padding-bottom: 30px;
-}
-
-
-/* ============================================================
-   EDITAR: ESTILO DEL LOGO
-============================================================ */
+/* ==========================================================
+   ===== EDITAR: ESTILO DEL LOGO =====
+========================================================== */
 
 .logo {
+
+    margin: 0 0 15px;
+
     color: #1877f2;
 
     font-size: 48px;
@@ -82,125 +81,98 @@ body {
     font-weight: bold;
 
     letter-spacing: -2px;
-
-    margin-bottom: 15px;
 }
 
 
-/* ============================================================
-   EDITAR: TÍTULO
-============================================================ */
+/* ==========================================================
+   ===== EDITAR: ESTILO DEL TÍTULO =====
+========================================================== */
 
-#mainTitle {
-    font-size: 30px;
+.main-title {
+
+    margin: 0 0 15px;
+
+    font-size: 28px;
 
     line-height: 1.25;
 
-    font-weight: 400;
-
-    margin: 0 0 18px;
-
-    max-width: 600px;
+    font-weight: 500;
 }
 
 
-/* ============================================================
-   EDITAR: DESCRIPCIÓN
-============================================================ */
+/* ==========================================================
+   ===== EDITAR: ESTILO DE DESCRIPCIÓN =====
+========================================================== */
 
-#mainDescription {
-    font-size: 20px;
+.main-description {
+
+    margin: 0;
+
+    font-size: 18px;
 
     line-height: 1.5;
 
-    margin: 0;
-
-    max-width: 600px;
+    color: #606770;
 }
 
 
-/* ============================================================
-   TEXTO EDITABLE
-============================================================ */
-
-.editable {
-    cursor: text;
-
-    border-radius: 5px;
-
-    transition:
-        background 0.2s,
-        outline 0.2s;
-}
-
-
-.editable:hover {
-    background: rgba(24, 119, 242, 0.04);
-}
-
-
-.editable:focus {
-    outline: 2px solid #1877f2;
-
-    outline-offset: 5px;
-}
-
-
-/* ============================================================
-   AYUDA
-============================================================ */
-
-.editHint {
-    margin-top: 20px;
-
-    color: #65676b;
-
-    font-size: 13px;
-}
-
-
-/* ============================================================
+/* ==========================================================
    FORMULARIO
-============================================================ */
+========================================================== */
 
-.signup-section {
+.form-container {
+
     width: 100%;
-}
 
-
-.signup-card {
-    width: 100%;
+    max-width: 400px;
 
     background: #ffffff;
 
+    padding: 22px;
+
     border-radius: 8px;
 
-    padding: 18px;
-
     box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.10),
-        0 8px 20px rgba(0, 0, 0, 0.08);
+        0 2px 4px rgba(
+            0,
+            0,
+            0,
+            0.10
+        ),
+
+        0 8px 20px rgba(
+            0,
+            0,
+            0,
+            0.08
+        );
 }
 
 
-/* ============================================================
-   TÍTULO FORMULARIO
-============================================================ */
+/* ==========================================================
+   TÍTULO DEL FORMULARIO
+========================================================== */
 
-.signup-card h2 {
+.form-title {
+
     margin: 0;
 
-    font-size: 25px;
+    text-align: center;
 
-    line-height: 1.2;
+    font-size: 24px;
 }
 
 
-.formSubtitle {
+/* ==========================================================
+   DESCRIPCIÓN DEL FORMULARIO
+========================================================== */
+
+.form-description {
+
     margin:
-        5px
-        0
-        18px;
+        7px 0 20px;
+
+    text-align: center;
 
     color: #606770;
 
@@ -208,46 +180,57 @@ body {
 }
 
 
-/* ============================================================
+/* ==========================================================
    SEPARADOR
-============================================================ */
+========================================================== */
 
-.divider {
-    width: 100%;
+.registration-form {
 
-    height: 1px;
+    border-top:
+        1px solid #dddfe2;
 
-    background: #dddfe2;
+    padding-top: 20px;
+}
+
+
+/* ==========================================================
+   LABELS
+========================================================== */
+
+.registration-form label {
+
+    display: block;
 
     margin:
-        16px
-        0
-        18px;
+        0 0 6px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #4b4f56;
 }
 
 
-/* ============================================================
-   CAMPOS NOMBRE / APELLIDOS
-============================================================ */
+/* ==========================================================
+   CAMPOS
+========================================================== */
 
-.name-row {
-    display: flex;
+.registration-form input {
 
-    gap: 8px;
-}
+    display: block;
 
-
-.input {
     width: 100%;
 
     height: 50px;
 
+    margin-bottom: 16px;
+
     padding:
-        12px;
+        12px 14px;
 
     border:
-        1px solid
-        #ccd0d5;
+        1px solid #ccd0d5;
 
     border-radius: 6px;
 
@@ -257,34 +240,34 @@ body {
 
     font-size: 16px;
 
-    margin-bottom: 12px;
-
     transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
+        border-color .2s,
+        box-shadow .2s;
 }
 
 
-.input::placeholder {
-    color: #8a8d91;
-}
+/* ==========================================================
+   CAMPOS AL HACER CLICK
+========================================================== */
 
+.registration-form input:focus {
 
-.input:focus {
     outline: none;
 
-    border-color: #1877f2;
+    border-color:
+        #1877f2;
 
     box-shadow:
         0 0 0 2px #e7f3ff;
 }
 
 
-/* ============================================================
+/* ==========================================================
    BOTÓN
-============================================================ */
+========================================================== */
 
-.submitButton {
+.registration-form button {
+
     width: 100%;
 
     min-height: 48px;
@@ -293,9 +276,10 @@ body {
 
     border-radius: 6px;
 
-    background: #42b72a;
+    background:
+        #42b72a;
 
-    color: white;
+    color: #ffffff;
 
     font-size: 18px;
 
@@ -304,36 +288,46 @@ body {
     cursor: pointer;
 
     transition:
-        background 0.2s,
-        transform 0.1s;
+        background .2s,
+        transform .1s;
 }
 
 
-.submitButton:hover {
-    background: #36a420;
+/* ==========================================================
+   ===== EDITAR: COLOR DEL BOTÓN =====
+========================================================== */
+
+.registration-form button:hover {
+
+    background:
+        #36a420;
 }
 
 
-.submitButton:active {
-    transform: scale(0.99);
+.registration-form button:active {
+
+    transform:
+        scale(.98);
 }
 
 
-.submitButton:disabled {
-    opacity: 0.65;
+.registration-form button:disabled {
+
+    opacity: .6;
 
     cursor: not-allowed;
 }
 
 
-/* ============================================================
-   MENSAJES
-============================================================ */
+/* ==========================================================
+   MENSAJE
+========================================================== */
 
-.statusMessage {
+.message {
+
     display: none;
 
-    margin-top: 12px;
+    margin-top: 15px;
 
     padding: 11px;
 
@@ -347,109 +341,146 @@ body {
 }
 
 
-.statusMessage.success {
+.message.success {
+
     display: block;
 
-    background: #e9f7e5;
+    background:
+        #e9f7e5;
 
-    color: #26731a;
+    color:
+        #26731a;
 }
 
 
-.statusMessage.error {
+.message.error {
+
     display: block;
 
-    background: #ffebe8;
+    background:
+        #ffebe8;
 
-    color: #b42318;
+    color:
+        #b42318;
 }
 
 
-/* ============================================================
-   PIE
-============================================================ */
+/* ==========================================================
+   PIE DE PÁGINA
+========================================================== */
 
-.footerText {
+.footer {
+
+    width: 100%;
+
+    max-width: 600px;
+
+    margin-top: 30px;
+
     text-align: center;
 
     color: #737373;
 
-    font-size: 12px;
+    font-size: 13px;
 
-    line-height: 1.5;
-
-    margin:
-        18px
-        10px
-        0;
+    line-height: 1.6;
 }
 
 
-/* ============================================================
-   TABLET / MÓVIL
-============================================================ */
+/* ==========================================================
+   TABLET
+========================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
 
-    .container {
-        grid-template-columns: 1fr;
+    .page {
 
-        gap: 35px;
-
-        max-width: 500px;
-    }
-
-
-    .intro {
-        text-align: center;
-
-        padding-bottom: 0;
-    }
-
-
-    #mainDescription {
-        margin-left: auto;
-        margin-right: auto;
+        padding:
+            45px 20px 35px;
     }
 
 
     .logo {
-        font-size: 42px;
-    }
-}
 
-
-/* ============================================================
-   MÓVILES PEQUEÑOS
-============================================================ */
-
-@media (max-width: 450px) {
-
-    .page {
-        padding:
-            25px
-            12px;
+        font-size: 44px;
     }
 
 
-    .name-row {
-        flex-direction: column;
+    .main-title {
 
-        gap: 0;
+        font-size: 26px;
     }
 
 
-    #mainTitle {
-        font-size: 25px;
-    }
+    .main-description {
 
-
-    #mainDescription {
         font-size: 17px;
     }
 
+}
 
-    .signup-card {
-        padding: 16px;
+
+/* ==========================================================
+   MÓVIL
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .page {
+
+        padding:
+            30px 14px;
     }
+
+
+    .header {
+
+        margin-bottom: 25px;
+    }
+
+
+    .logo {
+
+        font-size: 40px;
+    }
+
+
+    .main-title {
+
+        font-size: 23px;
+    }
+
+
+    .main-description {
+
+        font-size: 16px;
+    }
+
+
+    .form-container {
+
+        padding:
+            18px;
+
+        border-radius:
+            7px;
+    }
+
+
+    .form-title {
+
+        font-size:
+            22px;
+    }
+
+
+    .registration-form input {
+
+        height:
+            48px;
+
+        font-size:
+            16px;
+    }
+
 }

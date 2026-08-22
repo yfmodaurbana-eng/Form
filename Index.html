@@ -1,205 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario</title>
 
-    <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 20px;
+    }
 
-    <!-- ===== EDITAR: TÍTULO DE LA PESTAÑA ===== -->
-    <title>Crear una cuenta | Mi Web</title>
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Página de registro"
-    >
-
-    <link
-        rel="stylesheet"
-        href="styles.css"
-    >
-
+    button {
+      cursor: pointer;
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <h2>Formulario</h2>
 
-    <!-- =====================================================
-         CONTENEDOR PRINCIPAL
-    ====================================================== -->
+  <form id="formulario">
 
-    <main class="page">
+    <input
+      type="text"
+      name="nombre"
+      placeholder="Nombre"
+      required
+    >
 
+    <input
+      type="text"
+      name="apellidos"
+      placeholder="Apellidos"
+      required
+    >
 
-        <!-- =================================================
-             LOGO / TÍTULO PRINCIPAL
-        ================================================== -->
+    <button type="submit">Enviar</button>
 
-        <!-- ===== EDITAR: LOGO ===== -->
+  </form>
 
-        <header class="header">
+  <p id="resultado"></p>
 
-            <h1 class="logo">
-                MiRed
-            </h1>
+  <script>
+    const formulario = document.getElementById("formulario");
+    const resultado = document.getElementById("resultado");
 
+    formulario.addEventListener("submit", async function(e) {
 
-            <!-- ===== EDITAR: TÍTULO ===== -->
+      e.preventDefault();
 
-            <h2 class="main-title">
-                Conecta con las personas que te importan.
-            </h2>
+      resultado.textContent = "Enviando...";
 
+      const datos = new FormData(formulario);
 
-            <!-- ===== EDITAR: DESCRIPCIÓN ===== -->
+      await fetch("PEGA_AQUI_TU_URL_DE_APPS_SCRIPT", {
+        method: "POST",
+        body: datos,
+        mode: "no-cors"
+      });
 
-            <p class="main-description">
-                Crea una cuenta para comenzar a conectar
-                y disfrutar de nuestra comunidad.
-            </p>
+      resultado.textContent = "¡Enviado correctamente!";
+      formulario.reset();
 
-        </header>
-
-
-
-        <!-- =================================================
-             FORMULARIO
-        ================================================== -->
-
-        <section class="form-container">
-
-
-            <!-- ===== EDITAR: TÍTULO DEL FORMULARIO ===== -->
-
-            <h3 class="form-title">
-                Crear una cuenta
-            </h3>
-
-
-            <!-- ===== EDITAR: TEXTO DEL FORMULARIO ===== -->
-
-            <p class="form-description">
-                Es rápido y sencillo.
-            </p>
-
-
-            <form
-                id="registrationForm"
-                class="registration-form"
-            >
-
-
-                <!-- =========================================
-                     CAMPO NOMBRE
-                ========================================== -->
-
-                <!-- ===== EDITAR: LABEL ===== -->
-
-                <label for="firstName">
-                    Nombre
-                </label>
-
-
-                <!-- ===== EDITAR: PLACEHOLDER ===== -->
-
-                <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    placeholder="Introduce tu nombre"
-                    autocomplete="given-name"
-                    maxlength="50"
-                    required
-                >
-
-
-                <!-- =========================================
-                     CAMPO APELLIDOS
-                ========================================== -->
-
-                <!-- ===== EDITAR: LABEL ===== -->
-
-                <label for="lastName">
-                    Apellidos
-                </label>
-
-
-                <!-- ===== EDITAR: PLACEHOLDER ===== -->
-
-                <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Introduce tus apellidos"
-                    autocomplete="family-name"
-                    maxlength="80"
-                    required
-                >
-
-
-                <!-- =========================================
-                     BOTÓN
-                ========================================== -->
-
-                <!-- ===== EDITAR: TEXTO DEL BOTÓN ===== -->
-
-                <button
-                    type="submit"
-                    id="submitButton"
-                >
-                    Registrarse
-                </button>
-
-
-                <!-- MENSAJE DE RESULTADO -->
-
-                <div
-                    id="message"
-                    class="message"
-                ></div>
-
-            </form>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             TEXTO INFERIOR
-        ================================================== -->
-
-        <!-- ===== EDITAR: TEXTO INFERIOR ===== -->
-
-        <footer class="footer">
-
-            <p>
-                Puedes cambiar este texto por cualquier
-                información que quieras mostrar.
-            </p>
-
-            <p>
-                © 2026 MiRed. Todos los derechos reservados.
-            </p>
-
-        </footer>
-
-
-    </main>
-
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-
-    <script src="script.js"></script>
-
+    });
+  </script>
 
 </body>
-
 </html>

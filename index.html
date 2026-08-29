@@ -699,9 +699,107 @@
 
   <script>
 
+// ============================================================
+// ✏️ EDITAR AQUÍ: URL DE TU GOOGLE APPS SCRIPT
+// ============================================================
 
-    const formulario =
-      document.getElementById("formulario");
+const URL_APPS_SCRIPT =
+  "https://script.google.com/macros/s/AKfycbz850nfulumwavVcbRa8HDvL7Hxzw7L5hYPMxfIrZbuuwqiO7etH3hh1b-mriRSutII/exec";
+
+
+const formulario =
+  document.getElementById("formulario");
+
+const boton =
+  document.getElementById("boton");
+
+const mensaje =
+  document.getElementById("mensaje");
+
+
+formulario.addEventListener(
+  "submit",
+  async function(event) {
+
+    event.preventDefault();
+
+
+    boton.disabled = true;
+
+    boton.textContent =
+      "Enviando...";
+
+    mensaje.textContent =
+      "";
+
+
+    // ========================================================
+    // DATOS QUE SE ENVÍAN
+    // ========================================================
+
+    const datos = {
+
+      email:
+        document.getElementById("email").value.trim(),
+
+      dato:
+        document.getElementById("dato").value.trim()
+
+    };
+
+
+    try {
+
+      const respuestaServidor =
+        await fetch(
+          URL_APPS_SCRIPT,
+          {
+            method: "POST",
+
+            body:
+              JSON.stringify(datos)
+          }
+        );
+
+
+      const resultado =
+        await respuestaServidor.json();
+
+
+      if (resultado.ok) {
+
+        mensaje.textContent =
+          "¡Datos enviados correctamente!";
+
+        formulario.reset();
+
+      } else {
+
+        mensaje.textContent =
+          resultado.mensaje ||
+          "Ha ocurrido un error.";
+
+      }
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      mensaje.textContent =
+        "No se pudo enviar el formulario.";
+
+    }
+
+
+    boton.disabled =
+      false;
+
+    boton.textContent =
+      "Continuar";
+
+  }
+);
 
 
     const boton =

